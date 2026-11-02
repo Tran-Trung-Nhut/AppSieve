@@ -1,8 +1,8 @@
-# LLMDroid
+# AppSieve
 
 **APK-Free screening for LLM-integrated Android apps.**
 
-LLMDroid flags likely LLM-powered apps using only public app-store metadata: text descriptions and promotional screenshots.
+AppSieve flags likely LLM-powered apps using only public app-store metadata: text descriptions and promotional screenshots.
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -28,20 +28,20 @@ App listing (title + description + screenshots)
                     Fusion: Score-Max / Soft Voting / Stacking / Early Fusion
 ```
 
-**5-fold CV on 298 apps · Independent test N=110 · ROC-AUC up to 0.948**
+**5-fold CV on 298 apps · Independent test N=110**
 
 ---
 
 ## Setup
 
 ```bash
-git clone https://github.com/Tran-Trung-Nhut/LLMDroid
-cd LLMDroid
+git clone <anonymized-repository-url>
+cd <repository-folder>
 
-conda create -n llmdroid python=3.10 -y && conda activate llmdroid
+conda create -n appsieve python=3.10 -y && conda activate appsieve
 pip install -r requirements.txt
 
-# System deps (Ubuntu / Lightning AI)
+# System deps (Ubuntu)
 sudo apt-get install -y tesseract-ocr default-jre
 ```
 
@@ -156,7 +156,7 @@ python src/run_iaa.py
 
 ### Code-level validation (Table 2)
 
-Runs AI Discriminator on decompiled APKs and compares against listing labels and LLMDroid Early Fusion predictions.
+Runs AI Discriminator on decompiled APKs and compares against listing labels and AppSieve Early Fusion predictions.
 
 ```bash
 # One-time: download Androzoo metadata (~3 GB)
@@ -168,7 +168,7 @@ export ANDROZOO_API_KEY=your_key
 # Phase 1: code-validation set (N=80)
 python src/run_code_validation.py --phases 1
 
-# Phase 2: independent test set (N=110) + F1 comparison vs LLMDroid Early Fusion
+# Phase 2: independent test set (N=110) + F1 comparison vs AppSieve Early Fusion
 python src/run_code_validation.py --phases 2
 
 # Both phases
