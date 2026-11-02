@@ -50,7 +50,7 @@ def apk_decompile(path_apk, path_save_directory):
 def get_single_decompile(path_sha256_list):
     finished = 0
     for sha256_str in path_sha256_list:
-        down_command = 'curl -O --remote-header-name -G -d apikey=8c08e1e623110c600186098a11ba882a7e323ad32b71868510c971a504eca3f9 -d sha256={sha256} https://androzoo.uni.lu/api/download'
+        down_command = 'curl -O --remote-header-name -G -d apikey=' + os.environ["ANDROZOO_API_KEY"] + ' -d sha256={sha256} https://androzoo.uni.lu/api/download'
         down_command = down_command.format(sha256=sha256_str)
         os.system(down_command)
         try:
