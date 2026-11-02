@@ -174,7 +174,7 @@ def main():
     results["baseline_latencies"] = baseline_latencies
     write_json(out_dir / "table16_latency.json", results)
 
-    print("\nTable 16 — LLMDroid components:")
+    print("\nTable 16 — AppSieve components:")
     print(f"  BGE encode:       {results['bge_encode_s_per_app']:.3f} s/app")
     print(f"  CLIP encode (4):  {results['clip_encode_s_per_app']:.3f} s/app")
     print(f"  OCR (4 screens):  {results['ocr_s_per_app']:.3f} s/app")
